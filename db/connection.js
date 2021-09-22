@@ -11,4 +11,6 @@ try {
   console.log("Error al conectar con Firebase: ", error);
 }
 
-module.exports = admin;
+const db = admin.firestore();
+
+module.exports = db;
