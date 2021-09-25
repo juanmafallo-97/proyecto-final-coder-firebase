@@ -8,8 +8,8 @@ const getProductById = async (id) => {
     if (!response.data()) throw new Error(`No product found with id ${id}`);
     const product = { id: response.id, ...response.data() };
     return product;
-  } catch (error) {
-    throw new Error(error);
+  } catch (err) {
+    throw new Error(err);
   }
 };
 
@@ -21,8 +21,8 @@ const getAllProducts = async () => {
       ...product.data()
     }));
     return products;
-  } catch (error) {
-    throw new Error(error);
+  } catch (err) {
+    throw new Error(err);
   }
 };
 
@@ -31,8 +31,8 @@ const createProduct = async (product) => {
     const timestamp = Date.now();
     const { id } = await query.add({ timestamp, ...product });
     return id;
-  } catch (error) {
-    throw new Error(error);
+  } catch (err) {
+    throw new Error(err);
   }
 };
 
@@ -40,8 +40,8 @@ const updateProduct = async (id, productData) => {
   try {
     const product = query.doc(id);
     await product.update(productData);
-  } catch (error) {
-    throw new Error(error);
+  } catch (err) {
+    throw new Error(err);
   }
 };
 
